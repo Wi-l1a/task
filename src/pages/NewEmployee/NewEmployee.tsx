@@ -7,6 +7,7 @@ import EmployeeRow from '../../components/EmployeeRow/EmployeeRow';
 import { Input, InputAdornment, ListItemButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import TuneIcon from '@mui/icons-material/Tune';
+import { getEmployeesFromLS, saveEmployeesToLS } from '../../LS';
 
 export interface Employee {
     id: number;
@@ -30,42 +31,24 @@ const NewEmployee: FC = () => {
     const [active, setActive] = useState<string>('');
     const [searchQuery, setSearchQuery] = useState<string>('');
 
-    const getEmployeesLS = () => {
-        const storedEmployees = localStorage.getItem('employees');
-        if (storedEmployees) {
-            setEmployees(JSON.parse(storedEmployees));
-        }
-    };
-
-    const saveEmployeesLS = (updatedEmployees: PositionDetails[]) => {
-        const employeesWithoutImages = updatedEmployees.map((positionDetail) => ({
-            ...positionDetail,
-            employees: positionDetail.employees.map((employee) => ({
-                ...employee,
-                image: '',
-            })),
-        }));
-
-        localStorage.setItem('employees', JSON.stringify(employeesWithoutImages));
-    };
-
     useEffect(() => {
-        getEmployeesLS();
+        const employeesFromLS = getEmployeesFromLS();
+        setEmployees(employeesFromLS);
     }, []);
 
     useEffect(() => {
-        saveEmployeesLS(employees);
+        saveEmployeesToLS(employees);
     }, [employees]);
 
     const handleSetActive: React.Dispatch<React.SetStateAction<string>> = (value) => {
         const newActive = typeof value === 'function' ? value(active) : value;
         setActive(newActive);
-        setEmployees((prevEmployees) => {
-            return prevEmployees.map((employee) => ({
+        setEmployees((prevEmployees) =>
+            prevEmployees.map((employee) => ({
                 ...employee,
                 isActive: false,
-            }));
-        });
+            }))
+        );
     };
 
     const handleToggleActive = (index: number) => {

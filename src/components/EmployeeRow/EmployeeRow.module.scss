@@ -9,10 +9,13 @@
     padding: 0 10px;
     opacity: 0.8;
     pointer-events: none;
+    background: #bebebe85;
 
     &_active {
         opacity: 1;
         pointer-events: all;
+        background: #ffffff85;
+
 
     }
 
