@@ -38,7 +38,15 @@ const NewEmployee: FC = () => {
     };
 
     const saveEmployeesLS = (updatedEmployees: PositionDetails[]) => {
-        localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+        const employeesWithoutImages = updatedEmployees.map((positionDetail) => ({
+            ...positionDetail,
+            employees: positionDetail.employees.map((employee) => ({
+                ...employee,
+                image: '',
+            })),
+        }));
+
+        localStorage.setItem('employees', JSON.stringify(employeesWithoutImages));
     };
 
     useEffect(() => {

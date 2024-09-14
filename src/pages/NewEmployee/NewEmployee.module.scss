@@ -7,11 +7,11 @@
         background: rgba(0, 0, 0, 0.2);
         position: absolute;
         top: 0;
-        bottom: 0;
         left: 0;
         right: 0;
         z-index: 2;
         padding: 170px 20px 0 140px;
+        min-height: auto;
 
         @media(max-width:834px) {
             bottom: auto;
@@ -19,6 +19,7 @@
         }
 
         & .wrapper {
+            height: 100vh;
             display: flex;
             align-items: stretch;
             justify-content: space-between;
@@ -34,7 +35,7 @@
                 border-radius: 18px;
                 flex: 1;
                 background: $bg;
-                max-height: 80vh;
+                max-height: 800px;
                 padding: 22px 50px 32px 32px;
 
                 & .search_employee {

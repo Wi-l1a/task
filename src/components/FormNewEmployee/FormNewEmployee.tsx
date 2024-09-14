@@ -23,8 +23,13 @@ const FormNewEmployee: FC<FormNewEmployeeProps> = ({ setEmployees, employees, se
     });
 
     const handleChangeBrigades = (event: SelectChangeEvent<string>) => {
-        setActive('');
         setBrigades(event.target.value);
+        if (event.target.value === '') {
+            setActive(formValues.position);
+        }
+        else {
+            setActive('')
+        }
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -185,7 +190,7 @@ const FormNewEmployee: FC<FormNewEmployeeProps> = ({ setEmployees, employees, se
                         value={brigades}
                         onChange={handleChangeBrigades}
                     >
-                        <MenuItem value='' >Отменит выбор</MenuItem>
+                        <MenuItem value=''>Отменит выбор</MenuItem>
                         {
                             formValues.position === 'Швея' ?
                                 employees.filter(el => el.position === 'Швея')
