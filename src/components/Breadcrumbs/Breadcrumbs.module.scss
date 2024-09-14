@@ -1,0 +1,11 @@
+@import '../../SCSS/mixins';
+@import '../../SCSS/vars';
+
+.item {
+    color: #1E1E1E;
+    @include inter400;
+
+    &_active {
+        color: $active_color;
+    }
+}

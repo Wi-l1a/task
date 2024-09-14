@@ -1,0 +1,24 @@
+@import '../../SCSS/mixins';
+@import '../../SCSS/vars';
+
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    & .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        & span {
+            color: $font_color;
+            @include roboto400;
+        }
+    }
+}

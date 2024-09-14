@@ -1,0 +1,28 @@
+@import '../../SCSS/vars';
+
+.item {
+    & li {
+        & div {
+            min-width: auto;
+        }
+    }
+
+    & svg {
+        font-size: 30px;
+        fill: $font_color;
+
+        & path {
+            fill: $font_color;
+        }
+    }
+
+    &_active {
+        & svg {
+            fill: $active_color;
+
+            & path {
+                fill: $active_color;
+            }
+        }
+    }
+}
