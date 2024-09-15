@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Avatar, Switch, IconButton } from '@mui/material';
+import { Avatar, Switch, IconButton, Button, ListItemButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import s from './EmployeeRow.module.scss';
 import { PositionDetails } from '../../pages/NewEmployee/NewEmployee';
@@ -40,9 +40,9 @@ const EmployeeRow: FC<dataProps> = ({ data, onToggleActive, active }) => {
             className={s.switch}
           />
         )}
-        <IconButton className={s.editIcon}>
-          <EditIcon />
-        </IconButton>
+        <Button className={s.editIcon}>
+          <EditIcon fill={'#000'} />
+        </Button>
       </div>
     </li>
   );

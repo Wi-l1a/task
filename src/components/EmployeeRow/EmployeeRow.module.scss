@@ -59,6 +59,10 @@
         justify-content: flex-end;
         gap: 10px;
 
+        & .editIcon {
+            color: $font_color;
+        }
+
     }
 
 
